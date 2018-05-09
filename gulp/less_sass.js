@@ -8,6 +8,7 @@ const sourcemaps        = require('gulp-sourcemaps');
 const plumber           = require('gulp-plumber');
 const notify            = require('gulp-notify');
 const gulpMultiProcess  = require('gulp-multi-process')
+const sass              = require('gulp-sass');
 
 gulp.task('less', function () {
     return gulp.src([
@@ -31,6 +32,27 @@ gulp.task('less', function () {
         }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/css/'));
+});
+
+gulp.task('sass', function(){
+    return gulp.src([
+        'src/sass/*.sass', 
+        'src/sass/*.scss'
+    ])
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(autoprefixer({
+        browsers: ['last 4 versions', 'ie 10'],
+        cascade: false
+    }))
+    .pipe(cssnano())
+    .pipe(rename({
+        suffix: ".min",
+        extname: ".css"
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/css/'));    
 });
 
 gulp.task('less:watch', function () {
