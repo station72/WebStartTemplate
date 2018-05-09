@@ -2,6 +2,7 @@ const gulp              = require('gulp');
 const imageMin          = require('gulp-imagemin');
 const pngQuant          = require('imagemin-pngquant');
 const cache             = require('gulp-cache');
+const watch             = require('gulp-watch');
 
 gulp.task('img', function(){
     return gulp.src('src/img/**/*')
@@ -15,5 +16,7 @@ gulp.task('img', function(){
 });
 
 gulp.task('img:watch', function(){
-    return gulp.watch('src/img/**/*', ['img']);
+    return watch('src/img/**/*', function(){
+        return gulp.start(['img']);
+    });
 });

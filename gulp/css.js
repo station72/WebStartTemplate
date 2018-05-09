@@ -7,7 +7,7 @@ const cssnano           = require('gulp-cssnano');
 
 gulp.task('css:min', function(){
     return gulp.src([
-        'src/css/jquery.css',
+        'src/css/main.css',
     ])
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(cssnano())
@@ -19,8 +19,9 @@ gulp.task('css:min', function(){
 
 gulp.task('css:copy', function () {
     return gulp.src([
-            // 'src/libs/...',
-            'src/css/**/*.min.css'
+            'src/libs/normalize.css/normalize.css',
+            'src/libs/bootstrap/dist/css/bootstrap-grid.min.css',
+            'src/css/**/*.min.css',
         ])
         .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
         .pipe(gulp.dest('dist/css/'));

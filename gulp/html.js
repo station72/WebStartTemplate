@@ -15,5 +15,5 @@ gulp.task('html', function () {
 });
 
 gulp.task('html:watch', function () {
-    return gulp.watch(config.src.html, ['html']);
+    return gulp.watch('src/**/*.html', ['html']);
 });

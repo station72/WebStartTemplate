@@ -20,14 +20,10 @@ gulp.task('js:custom', function () {
 gulp.task('js:libs', function(){
     return gulp.src([
         'src/libs/jquery/dist/jquery.min.js',
-        'src/js/jquery.countdown.min.js',
-        'src/libs/owl.carousel/dist/owl.carousel.min.js',
-        'src/libs/bootstrap/dist/js/bootstrap.min.js'
+        // 'src/libs/owl.carousel/dist/owl.carousel.min.js',
+        // 'src/libs/bootstrap/dist/js/bootstrap.min.js'
     ])
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-    // .pipe(concat('libs.min.js'))
-    // .pipe(sourcemaps.init({loadMaps: true}))
-    // .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/js'));
 });
 
