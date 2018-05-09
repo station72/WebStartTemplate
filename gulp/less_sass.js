@@ -61,3 +61,7 @@ gulp.task('less:watch', function () {
         gulpMultiProcess(['less'], function(){});
     });
 });
+
+gulp.task('sass:watch', function(){
+    return gulp.watch('src/sass/**/*', ['sass']);
+})

@@ -12,6 +12,7 @@ gulp.task('del', function(){
 
 gulp.task('default', [
                       'less', 'less:watch', 
+                      'sass', 'sass:watch',
                       'html', 'html:watch', 
                       'js', 'js:watch', 
                       'img', 'img:watch',
